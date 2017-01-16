@@ -1,0 +1,18 @@
+/app/bootstrap.php.cache
+/vendor/
+/app/cache/
+/app/sessions/
+!app/cache/.gitkeep
+/app/config/parameters.yml
+/app/logs/*
+!app/logs/.gitkeep
+/app/phpunit.xml
+/bin/
+/composer.phar
+/web/bundles/
+/.idea
+# ignore all files for gulp.js usage
+gulpfile.js
+package.json
+node_modules/
+lexxl/

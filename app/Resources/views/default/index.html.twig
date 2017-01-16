@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div id="wrapper" xmlns="http://www.w3.org/1999/html">
+        <div class="container-fluid"><div class="row">
+                <div class="col-md-12">
+                    <a href="click/1/2"><h3>CLICK HERE</h3></a>
+                </div>
+
+                <div class="col-md-12">
+                    <h4>All clicks here:</h4>
+                    <table id="click-table" class="display">
+                        <thead>
+                            <th>ID</th>
+                            <th>User Agent</th>
+                            <th>IP</th>
+                            <th>Referrer</th>
+                            <th>Param1</th>
+                            <th>Param2</th>
+                            <th>Error</th>
+                            <th>Bad Domain</th>
+                        </thead>
+                        {% for click in clicks %}
+                            <tr>
+                                <td>{{ click.id }}</td>
+                                <td>{{ click.userAgent }}</td>
+                                <td>{{ click.ip }}</td>
+                                <td>{{ click.referrer }}</td>
+                                <td>{{ click.param1 }}</td>
+                                <td>{{ click.param2 }}</td>
+                                <td>{{ click.error }}</td>
+                                <td>{{ click.isBadDomain }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <div class="col-md-12">
+                    <h4>Bad domains here:</h4>
+                    <table id="bad-table" class="display">
+                        <thead>
+                            <th>ID</th>
+                            <th>ID</th>
+                        </thead>
+                        {% for domain in domains %}
+                            <tr>
+                                <td>{{ domain.id }}</td>
+                                <td>{{ domain.name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                </div>
+
+                <div class="col-md-2" id="bad-domain-form">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Add bad domain:</div>
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+        </div></div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+{% endblock %}
